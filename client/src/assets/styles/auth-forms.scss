@@ -1,0 +1,138 @@
+.auth-form {
+    .btn-outline {
+        display: inline-block;
+        cursor: pointer;
+        background: #aaa;
+        box-shadow: inset 0px 5px 0px rgb(149, 149, 149);
+        height: 40px;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        text-align: center;
+        padding: 8px 19px;
+    }
+
+    width: 300px;
+    position: relative;
+
+    h2 {
+        text-align: center;
+        color: #fff;
+        margin: 10px 0px 20px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .form-element {
+        margin: 15px 0px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-element label {
+        font-size: 14px;
+        color: #9e7055;
+    }
+
+    .form-toast {
+        position: absolute;
+        box-shadow: 3px 3px 10px 10px rgba(0, 0, 0, 0.15);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        background: #fff;
+        width: 200px;
+        border-radius: 10px;
+        padding: 10px 20px;
+    }
+
+    .form-toast .toast-content {
+        margin: 15px 0px;
+        text-align: center;
+    }
+
+    .form-toast h2 {
+        text-align: center;
+        color: #222;
+    }
+
+    .form-toast .toast-error {
+        color: #fc5d54;
+    }
+
+    .form-element .form-error {
+        background-color: hsl(358.4615384615deg 100% 61.7647058824%);
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 10px;
+        margin: 5px 3px;
+        border-radius: 2px;
+    }
+
+    .form-element input[type='email'],
+    .form-element input[type='text'],
+    .form-element input[type='password'] {
+        margin-top: 5px;
+        display: block;
+        padding: 10px;
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        box-shadow: inset 0px 5px 0px #e5c59b;
+        background: #ffe5bd;
+        background-color: #ffe5bd;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        box-shadow: inset 0px 5px 0px #c6c6c6 !important;
+        background-color: #fff !important;
+    }
+
+    .form-element input[type='checkbox'] {
+        margin-right: 4px;
+    }
+
+    .form-element .toggle-action {
+        font-size: 15px;
+        color: #9e7055;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .form-element .toggle-action .toggle-action-text {
+        font-size: 15px;
+        color: #ffd0ac;
+        font-size: 14px;
+        cursor: pointer;
+        margin: 0px 3px;
+    }
+
+    .form-element button {
+        /*
+      width: 100%;
+      height: 40px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      color: #f5f5f5;
+      background: #222;
+      border-radius: 10px;
+      cursor: pointer;
+      */
+        width: 100%;
+        background: #81aa4a;
+        box-shadow: inset 0px -5px 0px #6e892f;
+    }
+
+    .form-element .forgot-password {
+        display: block;
+        text-align: right;
+        font-size: 15px;
+        color: #1a79ca;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,61 @@
+.play-outer {
+    padding: 10px 20px 20px 20px;
+    display: block;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    background: #f9f9f9;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 7px solid #412c1b;
+    background-color: #523723;
+    text-align: center;
+
+    .input-field {
+        display: flex;
+        flex-direction: column;
+        background-color: #0000004f;
+        padding: 5px;
+        border-radius: 10px;
+
+        .play-buttons {
+            margin: 2px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .child-btn {
+                margin: 4px;
+            }
+        }
+
+        input[type='text'] {
+            margin: 5px;
+            display: block;
+            font-size: 15px;
+            outline: none;
+            border-radius: 5px;
+            border: none;
+            text-decoration: none;
+            box-shadow: inset 0px 5px 0px #e5c59b;
+            background: #ffe5bd;
+            background-color: #ffe5bd;
+            text-align: center;
+            padding: 5px;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            box-shadow: inset 0px 5px 0px #c6c6c6 !important;
+            background-color: #fff !important;
+        }
+    }
+
+    .game-logo {
+        margin: 0px auto;
+        margin-bottom: 10px;
+        width: 100px;
+    }
+}

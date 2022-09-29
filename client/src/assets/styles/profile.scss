@@ -1,0 +1,100 @@
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    color: #c58436;
+
+    h2 {
+        font-weight: bold;
+    }
+
+    .category {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.profile-outer {
+    width: 100%;
+    position: relative;
+
+    .profile-inner {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5px;
+
+        .profile-left {
+            display: flex;
+            flex-direction: row;
+            float: left;
+        }
+        .profile-right {
+            display: flex;
+            flex-direction: row;
+            float: right;
+        }
+
+        .profile-content {
+            padding: 8px;
+            border: 7px solid #412c1b;
+            border-radius: 10px;
+            background-color: #523723;
+        }
+
+        .profile-elem {
+            height: 40px;
+            margin: 0px 5px;
+        }
+    }
+}
+
+.progess-outer {
+    width: 150px; /* Full width */
+    overflow: hidden;
+    background-color: #ddd; /* Grey background */
+    background: #aaa;
+    box-shadow: inset 0px 5px 0px rgb(149, 149, 149);
+    height: 20px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+}
+
+.progess-inner {
+    text-align: right; /* Right-align text */
+    color: white; /* White text color */
+    width: 65%;
+    background-color: #f44336;
+    border-radius: 5px;
+    height: 100%;
+    box-shadow: inset 0px 5px 0px #de3a2f;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.signout-btn {
+    margin: 5px auto;
+}
+
+.profile-level {
+    display: inline-block;
+    cursor: pointer;
+    background: #aaa;
+    box-shadow: inset 0px 5px 0px rgb(149, 149, 149);
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 8px 13px;
+}

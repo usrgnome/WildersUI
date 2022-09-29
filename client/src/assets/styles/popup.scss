@@ -1,0 +1,30 @@
+.popup {
+    padding: 20px 30px;
+    display: block;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    background: #f9f9f9;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 7px solid #412c1b;
+    background-color: #523723;
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 15px;
+        height: 15px;
+        background: #412c1b;
+        color: #eee;
+        text-align: center;
+        border-radius: 15px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+    }
+}
