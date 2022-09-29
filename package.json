@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev:client": "webpack serve --env development",
-    "build:client": "rm -rf ./client/build && webpack --env production",
+    "dev": "webpack serve --env development",
+    "build": "rm -rf ./client/build && webpack --env production"
   },
   "keywords": [],
   "author": "",
@@ -39,11 +39,12 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.18.6",
+    "axios": "^0.27.2",
     "babel-loader": "^8.2.5",
     "copy-webpack-plugin": "^11.0.0",
     "mini-css-extract-plugin": "^2.6.1",
     "terser": "^5.14.1",
     "terser-webpack-plugin": "^5.3.3",
-    "ts-node": "^10.8.2",
+    "ts-node": "^10.8.2"
   }
 }

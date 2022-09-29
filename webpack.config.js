@@ -119,7 +119,7 @@ module.exports = function (env) {
             hot: true,
             port: 8080,
             proxy: {
-                '/auth': 'http://localhost:3000',
+                '/auth': 'http://localhost:3001',
             },
         };
     }

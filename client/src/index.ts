@@ -1,6 +1,13 @@
+import { getUserData, requestNewToken, sendSignin } from './auth.service';
 import { getElemClass, getElemId } from './utils';
 
-const user = { username: 'someUserName', exp: 5 };
+const user = {
+    username: 'someUserName',
+    exp: 5,
+    currency: 0,
+    items: [],
+    id: 0,
+};
 
 function expToLevel(xp: number) {
     return Math.floor(xp / 10);
@@ -19,14 +26,31 @@ function expToPercentage(exp) {
     return remainderXp / (levelToExp(nextLevel) - levelToExp(level));
 }
 
-export function showProfileButtons() {
-    getElemId<HTMLDivElement>('profile-header', true).style.display = 'block';
-    getElemId<HTMLDivElement>('profile-header-username', true).innerText =
-        user.username;
-    getElemId<HTMLDivElement>('profile-header-xp-bar', true).style.width =
-        Math.floor(100 * expToPercentage(user.exp)) + '%';
-    getElemId<HTMLDivElement>('profile-header-account-level', true).innerText =
-        expToLevel(user.exp) + '';
+export async function showProfileButtons() {
+    getUserData()
+        .then((res) => {
+            const { data } = res;
+            console.log(data);
+            user.username = data.username;
+            user.currency = data.currency;
+            user.id = data.id;
+
+            getElemId<HTMLDivElement>('profile-header', true).style.display =
+                'block';
+            getElemId<HTMLDivElement>(
+                'profile-header-username',
+                true,
+            ).innerText = user.username;
+            getElemId<HTMLDivElement>(
+                'profile-header-xp-bar',
+                true,
+            ).style.width = Math.floor(100 * expToPercentage(user.exp)) + '%';
+            getElemId<HTMLDivElement>(
+                'profile-header-account-level',
+                true,
+            ).innerText = expToLevel(user.exp) + '';
+        })
+        .catch((err) => console.warn(err));
 }
 
 export function openAuthPopup() {
@@ -38,6 +62,12 @@ export function closeAuthPopup() {
 }
 
 export function showProfilePopup() {
+    getElemId<HTMLDivElement>('profile-username', true).innerText =
+        user.username;
+    getElemId<HTMLDivElement>('profile-currency', true).innerText =
+        user.currency + '';
+    getElemId<HTMLDivElement>('profile-exp', true).innerText = 0 + '';
+    getElemId<HTMLDivElement>('profile-id', true).innerText = user.id + '';
     getElemId<HTMLDivElement>('profile-popup', true).style.display = 'block';
 }
 
@@ -174,6 +204,54 @@ getElemId<HTMLElement>('logout-btn', true).onclick = function (e) {
     closeProfilePopup();
 };
 
+getElemId<HTMLElement>('submit-signin-btn', true).onclick = function (e) {
+    const email = getElemId<HTMLInputElement>('lgn-email', true).value;
+    const password = getElemId<HTMLInputElement>('lgn-password', true).value;
+
+    sendSignin(email, password)
+        .then((res) => {
+            if (res.status === 400) {
+                res.json().then((json) => {
+                    const message = json.message;
+                    let foundEmailIssue = false;
+                    let foundPasswordIssue = false;
+                    for (let i = 0; i < message.length; i++) {
+                        const text = message[i];
+                        if (!foundEmailIssue && text.match(/email/)) {
+                            foundEmailIssue = true;
+                            loginErrors.emailError = text;
+                        } else if (
+                            !foundPasswordIssue &&
+                            text.match(/password/)
+                        ) {
+                            foundPasswordIssue = true;
+                            loginErrors.passwordError = text;
+                        }
+                    }
+
+                    if (!foundEmailIssue) loginErrors.emailError = '';
+                    if (!foundPasswordIssue) loginErrors.passwordError = '';
+                    showLoginForm();
+                });
+            } else if (res.status === 403) {
+                loginErrors.emailError = 'username or password incorrect!';
+                loginErrors.passwordError = '';
+                showLoginForm();
+            } else if (res.status === 200) {
+                loginErrors.emailError = '';
+                loginErrors.passwordError = '';
+                closeAuthPopup();
+                hideRegisterButtons();
+                showProfileButtons();
+            } else {
+                console.log(res);
+            }
+        })
+        .catch((err) => {
+            console.log('err', err);
+        });
+};
+
 export function setIsSignedUp(isSignedUp: boolean) {
     if (isSignedUp) {
         showProfileButtons();
@@ -184,5 +262,12 @@ export function setIsSignedUp(isSignedUp: boolean) {
     }
 }
 
-user.username = "<script>alert('hi');</script>";
-setIsSignedUp(true);
+requestNewToken()
+    .then((token) => {
+        console.log(token);
+        hideRegisterButtons();
+        showProfileButtons();
+    })
+    .catch((err) => {
+        console.warn(err);
+    });

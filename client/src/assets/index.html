@@ -27,7 +27,11 @@
             <!-- Profile/XP Level/ XP Bar OR login / register buttons -->
             <div class="profile-outer">
                 <div class="profile-inner">
-                    <div class="profile-content" id="profile-header">
+                    <div
+                        class="profile-content"
+                        id="profile-header"
+                        style="display: none"
+                    >
                         <div class="profile-left">
                             <div
                                 class="btn btn-yellow profile-btn profile-elem"
@@ -93,9 +97,7 @@
                             id="lgn-email"
                             placeholder="Enter email"
                         />
-                        <div class="form-error" id="lgn-email-error">
-                            Email Error
-                        </div>
+                        <div class="form-error" id="lgn-email-error"></div>
                     </div>
                     <div class="form-element">
                         <label for="lgn-password">Password</label>
@@ -104,12 +106,12 @@
                             id="lgn-password"
                             placeholder="Enter password"
                         />
-                        <div class="form-error" id="lgn-password-error">
-                            {passwordError}
-                        </div>
+                        <div class="form-error" id="lgn-password-error"></div>
                     </div>
                     <div class="form-element">
-                        <button class="btn-outline">Sign in</button>
+                        <button class="btn-outline" id="submit-signin-btn">
+                            Sign in
+                        </button>
                     </div>
                     <div class="form-element">
                         <div class="toggle-action">
@@ -135,9 +137,7 @@
                             id="{usernameFieldId}"
                             placeholder="Enter username"
                         />
-                        <div class="form-error" id="reg-username-error">
-                            {usernameError}
-                        </div>
+                        <div class="form-error" id="reg-username-error"></div>
                     </div>
                     <div class="form-element">
                         <label htmlFor="{emailFieldId}">Email</label>
@@ -146,9 +146,7 @@
                             id="{emailFieldId}"
                             placeholder="Enter email"
                         />
-                        <div class="form-error" id="reg-email-error">
-                            {emailError}
-                        </div>
+                        <div class="form-error" id="reg-email-error"></div>
                     </div>
                     <div class="form-element">
                         <label htmlFor="{passwordFieldId}">Password</label>
@@ -157,9 +155,7 @@
                             id="{passwordFieldId}"
                             placeholder="Enter password"
                         />
-                        <div class="form-error" id="reg-password-error">
-                            {passwordError}
-                        </div>
+                        <div class="form-error" id="reg-password-error"></div>
                     </div>
                     <div class="form-element">
                         <button class="btn-outline">Sign in</button>
@@ -180,36 +176,46 @@
                 </div>
             </div>
 
-            <div class="popup" id="profile-popup" style="display: none;">
-                <div class="close-btn" id="profile-popup-close-btn">&times;</div>
+            <div class="popup" id="profile-popup" style="display: none">
+                <div class="close-btn" id="profile-popup-close-btn">
+                    &times;
+                </div>
 
                 <div class="profile-form">
                     <h2>Profile</h2>
                     <div class="form-element">
                         <div class="category">
                             <div class="category-title">Username:</div>
-                            <div class="category-value">{User.username}</div>
+                            <div
+                                class="category-value"
+                                id="profile-username"
+                            ></div>
                         </div>
                     </div>
                     <div class="form-element">
                         <div class="category">
                             <div class="category-title">Currency:</div>
-                            <div class="category-value">{User.currency}</div>
+                            <div
+                                class="category-value"
+                                id="profile-currency"
+                            ></div>
                         </div>
                     </div>
                     <div class="form-element">
                         <div class="category">
                             <div class="category-title">Exp:</div>
-                            <div class="category-value">{User.exp}</div>
+                            <div class="category-value" id="profile-exp"></div>
                         </div>
                     </div>
                     <div class="form-element">
                         <div class="category">
                             <div class="category-title">Id:</div>
-                            <div class="category-value">{User.id}</div>
+                            <div class="category-value" id="profile-id"></div>
                         </div>
                     </div>
-                    <button class="btn btn-red signout-btn" id="logout-btn">Logout out!</button>
+                    <button class="btn btn-red signout-btn" id="logout-btn">
+                        Logout out!
+                    </button>
                 </div>
             </div>
         </div>

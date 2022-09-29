@@ -11,11 +11,11 @@ The following repo containst the front-end code for https://wilders.io.
 $ npm install 
 
 # desc: Starts a live session for the client
-$ npm run dev:client
+$ npm run dev
 
 # build client
 # desc: Compiles all client files & assets to client/build/
-$ npm run build:client
+$ npm run build
 ```
 
 ## Support
