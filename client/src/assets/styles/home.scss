@@ -35,14 +35,36 @@ body {
 .btn-yellow {
     background: #f6b600;
     box-shadow: inset 0px -5px 0px #e4aa00;
+
+    &:active {
+        box-shadow: inset 0px 5px 0px #e4aa00;
+    }
 }
 
 .btn-brown {
     background: #c58436;
     box-shadow: inset 0px -5px 0px #a46d35;
+
+    &:active {
+        box-shadow: inset 0px 5px 0px #a46d35;
+    }
 }
 
 .btn-red {
-    box-shadow: inset 0px 5px 0px #de3a2f;
     background-color: #f44336;
+    box-shadow: inset 0px -5px 0px #de3a2f;
+
+    &:active {
+        box-shadow: inset 0px 5px 0px #de3a2f;
+    }
 }
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }

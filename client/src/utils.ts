@@ -23,13 +23,23 @@ export function getElemClass<T extends HTMLElement>(
     return elems;
 }
 
-export function hasAny(array1: RegExp[], array2: string[]) {
-    for (let i = 0; i < array1.length; i++)
-        for (let u = 0; u < array2.length; u++)
-            if (array2[u].match(array1[i])) return array2[u];
-    return '';
-}
-
 export const assert = (cond: boolean, message = 'Failed to assert!') => {
     if (!cond) throw new Error(message);
 };
+
+export function expToLevel(xp: number) {
+    return Math.floor(xp / 10);
+}
+
+export function levelToExp(level: number) {
+    return level * 10;
+}
+
+export function expToPercentage(exp: number) {
+    const level = expToLevel(exp);
+    const nextLevel = level + 1;
+
+    const xpToCurrentlevel = levelToExp(level);
+    const remainderXp = exp - xpToCurrentlevel;
+    return remainderXp / (levelToExp(nextLevel) - levelToExp(level));
+}

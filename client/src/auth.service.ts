@@ -104,6 +104,7 @@ export async function requestNewToken(): Promise<string> {
         if (res.status === 200) {
             res.json().then((json) => {
                 const { token } = json as { token: string };
+                authToken = token;
                 resolve(token);
             });
         } else {

@@ -12,14 +12,14 @@
             <div class="play-outer">
                 <img src="./img/ui/logo.png" class="game-logo" alt="game" />
                 <div class="input-field">
-                    <input type="text" placeholder="Enter your username" />
+                    <input type="text" id="username-input" placeholder="Enter your username" />
                     <div class="play-buttons">
-                        <div class="btn btn-brown dropdown child-btn">
+                        <button class="btn btn-brown dropdown child-btn">
                             Europe #1
-                        </div>
-                        <div class="btn btn-yellow play-btn child-btn noselect">
-                            <div class="noselect">Play!</div>
-                        </div>
+                        </button>
+                        <button class="btn btn-yellow play-btn child-btn" id="play-btn">
+                            Play!
+                        </button>
                     </div>
                 </div>
             </div>
@@ -33,12 +33,12 @@
                         style="display: none"
                     >
                         <div class="profile-left">
-                            <div
+                            <button
                                 class="btn btn-yellow profile-btn profile-elem"
                                 id="profile-header-open-profile-btn"
                             >
                                 Profile
-                            </div>
+                            </button>
                             <button
                                 class="profile-level profile-elem"
                                 id="profile-header-account-level"
@@ -73,7 +73,7 @@
                                 Register
                             </div>
                             <div
-                                class="btn btn-yellow profile-btn profile-elem"
+                                class="btn btn-yellow noselect profile-btn profile-elem"
                                 id="login-btn"
                             >
                                 Login
@@ -131,34 +131,36 @@
                 <div class="auth-form" id="register-form" style="display: none">
                     <h2>Signup</h2>
                     <div class="form-element">
-                        <label htmlFor="{usernameFieldId}">Username</label>
+                        <label for="reg-user">Username</label>
                         <input
                             type="text"
-                            id="{usernameFieldId}"
+                            id="reg-username"
                             placeholder="Enter username"
                         />
                         <div class="form-error" id="reg-username-error"></div>
                     </div>
                     <div class="form-element">
-                        <label htmlFor="{emailFieldId}">Email</label>
+                        <label for="reg-email">Email</label>
                         <input
                             type="email"
-                            id="{emailFieldId}"
+                            id="reg-email"
                             placeholder="Enter email"
                         />
                         <div class="form-error" id="reg-email-error"></div>
                     </div>
                     <div class="form-element">
-                        <label htmlFor="{passwordFieldId}">Password</label>
+                        <label htmlFor="reg-password">Password</label>
                         <input
                             type="password"
-                            id="{passwordFieldId}"
+                            id="reg-password"
                             placeholder="Enter password"
                         />
                         <div class="form-error" id="reg-password-error"></div>
                     </div>
                     <div class="form-element">
-                        <button class="btn-outline">Sign in</button>
+                        <button class="btn-outline" id="submit-register-btn">
+                            Sign up
+                        </button>
                     </div>
                     <div class="form-element">
                         <div class="toggle-action">
