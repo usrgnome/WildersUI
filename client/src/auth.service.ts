@@ -2,6 +2,9 @@ import axios from 'axios';
 
 let authToken = '';
 
+const isDev = /(localhost|127\.0\.0\.1)/.test(location.host);
+const baseUrl = isDev ? '' : 'https://account.wilders.io/';
+
 const axiosApiInstance = axios.create();
 
 // Response interceptor for API calls
@@ -44,11 +47,11 @@ axiosApiInstance.interceptors.request.use(
 );
 
 export function getUserData() {
-    return axiosApiInstance.get('/auth/profile', {});
+    return axiosApiInstance.get(baseUrl + '/auth/profile', {});
 }
 
 export async function sendSignin(email: string, password: string) {
-    return fetch('/auth/local/signin', {
+    return fetch(baseUrl + '/auth/local/signin', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -66,7 +69,7 @@ export async function sendSignup(
     email: string,
     password: string,
 ) {
-    return await fetch('/auth/local/signup', {
+    return await fetch(baseUrl + '/auth/local/signup', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -81,7 +84,7 @@ export async function sendSignup(
 }
 
 export async function sendSignout() {
-    return await fetch('/auth/logout', {
+    return await fetch(baseUrl + '/auth/logout', {
         method: 'POST',
         credentials: 'include',
     });
@@ -96,7 +99,7 @@ export function getTokenPayload(token: string) {
 
 export async function requestNewToken(): Promise<string> {
     return new Promise(async (resolve, reject) => {
-        const res = await fetch('/auth/refresh', {
+        const res = await fetch(baseUrl + '/auth/refresh', {
             method: 'GET',
             credentials: 'include',
         });
