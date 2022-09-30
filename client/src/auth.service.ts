@@ -3,9 +3,11 @@ import axios from 'axios';
 let authToken = '';
 
 const isDev = /(localhost|127\.0\.0\.1)/.test(location.host);
-const baseUrl = isDev ? '' : 'https://account.wilders.io/';
+const baseUrl = isDev ? '' : 'https://account.wilders.io';
 
-const axiosApiInstance = axios.create();
+const axiosApiInstance = axios.create({
+    withCredentials: true,
+});
 
 // Response interceptor for API calls
 axiosApiInstance.interceptors.response.use(
