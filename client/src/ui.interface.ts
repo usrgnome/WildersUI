@@ -54,13 +54,29 @@ export function closeAuthPopup() {
 }
 
 export function showProfilePopup() {
-    getElemId<HTMLDivElement>('profile-username', true).innerText =
-        user.username;
-    getElemId<HTMLDivElement>('profile-currency', true).innerText =
-        user.currency + '';
-    getElemId<HTMLDivElement>('profile-exp', true).innerText = 0 + '';
-    getElemId<HTMLDivElement>('profile-id', true).innerText = user.id + '';
-    getElemId<HTMLDivElement>('profile-popup', true).style.display = 'block';
+    getUserData()
+        .then((res) => {
+            const { data } = res;
+            user.username = data.username;
+            user.currency = data.currency;
+            user.id = data.id;
+            user.exp = data.exp;
+            console.log('resolved!');
+
+            getElemId<HTMLDivElement>('profile-username', true).innerText =
+                user.username;
+            getElemId<HTMLDivElement>('profile-currency', true).innerText =
+                user.currency + '';
+            getElemId<HTMLDivElement>('profile-exp', true).innerText =
+                user.exp + '';
+            getElemId<HTMLDivElement>('profile-id', true).innerText =
+                user.id + '';
+            getElemId<HTMLDivElement>('profile-popup', true).style.display =
+                'block';
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 }
 
 export function closeProfilePopup() {
@@ -200,8 +216,8 @@ getElemId<HTMLElement>('register-btn', true).onclick = function (e) {
 };
 
 getElemId<HTMLElement>('logout-btn', true).onclick = function (e) {
-    hideProfileButtons();
-    showRegisterButtons();
+    //hideProfileButtons();
+    //showRegisterButtons();
     closeProfilePopup();
     sendSignout();
 };

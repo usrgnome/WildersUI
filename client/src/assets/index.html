@@ -12,12 +12,25 @@
             <div class="play-outer">
                 <img src="./img/ui/logo.png" class="game-logo" alt="game" />
                 <div class="input-field">
-                    <input type="text" id="username-input" placeholder="Enter your username" />
+                    <input
+                        id="name-input"
+                        type="text"
+                        placeholder="Enter your name"
+                        name="something"
+                        autocomplete="nope"
+                        autofocus
+                    />
+                    <input style="opacity: 0; position: absolute; pointer-events: none;">
                     <div class="play-buttons">
-                        <button class="btn btn-brown dropdown child-btn">
-                            Europe #1
-                        </button>
-                        <button class="btn btn-yellow play-btn child-btn" id="play-btn">
+                        <select
+                            id="server-select"
+                            class="btn btn-brown dropdown child-btn"
+                        >
+                        </select>
+                        <button
+                            class="btn btn-yellow play-btn child-btn"
+                            id="play-btn"
+                        >
                             Play!
                         </button>
                     </div>

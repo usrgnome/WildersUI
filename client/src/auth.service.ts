@@ -3,7 +3,7 @@ import axios from 'axios';
 let authToken = '';
 
 const isDev = /(localhost|127\.0\.0\.1)/.test(location.host);
-const baseUrl = isDev ? '' : 'https://account.wilders.io';
+const baseUrl = isDev ? '' : 'https://account.wilders.io/';
 
 const axiosApiInstance = axios.create({
     withCredentials: true,
@@ -86,10 +86,13 @@ export async function sendSignup(
 }
 
 export async function sendSignout() {
-    return await fetch(baseUrl + '/auth/logout', {
-        method: 'POST',
-        credentials: 'include',
-    });
+
+    return axiosApiInstance.post(baseUrl + '/auth/logout');
+
+    //return await fetch(baseUrl + '/auth/logout', {
+        //method: 'POST',
+        //credentials: 'include',
+    //});
 }
 
 export function getTokenPayload(token: string) {
