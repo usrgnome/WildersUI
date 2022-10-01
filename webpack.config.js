@@ -120,6 +120,7 @@ module.exports = function (env) {
             port: 8080,
             proxy: {
                 '/auth': 'http://localhost:3001',
+                '/api': 'http://localhost:3001',
             },
         };
     }

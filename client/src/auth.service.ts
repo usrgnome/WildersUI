@@ -2,7 +2,7 @@ import axios from 'axios';
 
 let authToken = '';
 
-const isDev = /(localhost|127\.0\.0\.1)/.test(location.host);
+export const isDev = /(localhost|127\.0\.0\.1)/.test(location.host);
 const baseUrl = isDev ? '' : 'https://account.wilders.io/';
 
 const axiosApiInstance = axios.create({
@@ -86,12 +86,11 @@ export async function sendSignup(
 }
 
 export async function sendSignout() {
-
     return axiosApiInstance.post(baseUrl + '/auth/logout');
 
     //return await fetch(baseUrl + '/auth/logout', {
-        //method: 'POST',
-        //credentials: 'include',
+    //method: 'POST',
+    //credentials: 'include',
     //});
 }
 
@@ -117,6 +116,29 @@ export async function requestNewToken(): Promise<string> {
             });
         } else {
             reject('Could not get token!');
+        }
+    });
+}
+
+interface IServerStatus {
+    name: string;
+    region: string;
+    subdomain: string;
+    players: number;
+}
+export async function getServers(): Promise<IServerStatus[]> {
+    return new Promise(async (resolve, reject) => {
+        const res = await fetch(baseUrl + '/api/servers', {
+            method: 'GET',
+            credentials: 'include',
+        });
+
+        if (res.status === 200) {
+            res.json().then((json) => {
+                resolve(json);
+            });
+        } else {
+            reject('Could not get servers!');
         }
     });
 }
