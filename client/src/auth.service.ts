@@ -3,9 +3,10 @@ import axios from 'axios';
 let authToken = '';
 
 export const isDev = /(localhost|127\.0\.0\.1)/.test(location.host);
-const baseUrl = isDev ? '' : 'https://account.wilders.io/';
+const baseUrl = isDev ? '' : 'https://account.wilders.io';
 
 const axiosApiInstance = axios.create({
+    baseURL: baseUrl,
     withCredentials: true,
 });
 
@@ -49,7 +50,7 @@ axiosApiInstance.interceptors.request.use(
 );
 
 export function getUserData() {
-    return axiosApiInstance.get(baseUrl + '/auth/profile', {});
+    return axiosApiInstance.get('/auth/profile', {});
 }
 
 export async function sendSignin(email: string, password: string) {
@@ -86,7 +87,7 @@ export async function sendSignup(
 }
 
 export async function sendSignout() {
-    return axiosApiInstance.post(baseUrl + '/auth/logout');
+    return axiosApiInstance.post('/auth/logout');
 
     //return await fetch(baseUrl + '/auth/logout', {
     //method: 'POST',
